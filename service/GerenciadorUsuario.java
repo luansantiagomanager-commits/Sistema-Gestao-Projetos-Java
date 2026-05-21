@@ -5,6 +5,7 @@ import com.manager.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class GerenciadorUsuario {
     private List<Usuario> usuarios;
@@ -82,6 +83,6 @@ public class GerenciadorUsuario {
     }
     
     public List<Usuario> listarPorPerfil(Perfil perfil) {
-        return usuarios.stream().filter(u -> u.getPerfil() == perfil).toList();
+        return usuarios.stream().filter(u -> u.getPerfil() == perfil).collect(Collectors.toList());
     }
 }

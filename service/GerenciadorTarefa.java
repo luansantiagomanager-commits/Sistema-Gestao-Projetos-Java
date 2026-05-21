@@ -5,6 +5,7 @@ import com.manager.model.Projeto;
 import com.manager.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GerenciadorTarefa {
     private List<Tarefa> tarefas;
@@ -25,11 +26,11 @@ public class GerenciadorTarefa {
     
     public List<Tarefa> listarPorResponsavel(Usuario responsavel) {
         return tarefas.stream().filter(t -> t.getResponsavel() != null && 
-                   t.getResponsavel().getId().equals(responsavel.getId())).toList();
+                   t.getResponsavel().getId().equals(responsavel.getId())).collect(Collectors.toList());
     }
     
     public List<Tarefa> listarPorProjeto(Projeto projeto) {
-        return tarefas.stream().filter(t -> t.getProjeto().getId().equals(projeto.getId())).toList();
+        return tarefas.stream().filter(t -> t.getProjeto().getId().equals(projeto.getId())).collect(Collectors.toList());
     }
     
     public void atualizarStatus(Long idTarefa, String novoStatus) {

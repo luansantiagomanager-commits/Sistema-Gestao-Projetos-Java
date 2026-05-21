@@ -6,6 +6,7 @@ import com.manager.model.Equipe;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GerenciadorProjeto {
     private List<Projeto> projetos;
@@ -29,11 +30,11 @@ public class GerenciadorProjeto {
     
     public List<Projeto> listarPorGerente(Usuario gerente) {
         return projetos.stream().filter(p -> p.getGerenteResponsavel() != null && 
-                   p.getGerenteResponsavel().getId().equals(gerente.getId())).toList();
+                   p.getGerenteResponsavel().getId().equals(gerente.getId())).collect(Collectors.toList());
     }
     
     public List<Projeto> listarPorStatus(String status) {
-        return projetos.stream().filter(p -> p.getStatus().equalsIgnoreCase(status)).toList();
+        return projetos.stream().filter(p -> p.getStatus().equalsIgnoreCase(status)).collect(Collectors.toList());
     }
     
     public void atualizarStatus(Long idProjeto, String novoStatus) {
